@@ -257,8 +257,8 @@ Retorno menu(Inscricao lista[], int totalCadastrados, Frequencia listaFrequencia
 				}
 				break;
             case 4:
-				if(totalCadastrados > 0){
-					cout << "Listar inscritos...\n";
+				if(totalCadastrados > 0 || frequenciasRegistradas > 0){
+					cout << "Listar presenças...\n";
 					exibirFrequencias(listaFrequencia,frequenciasRegistradas);
 				}else{
 					cout << "lista vazia\n";
