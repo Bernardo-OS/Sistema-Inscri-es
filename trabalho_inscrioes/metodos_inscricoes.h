@@ -221,6 +221,14 @@ Retorno menu(Inscricao lista[], int totalCadastrados, Frequencia listaFrequencia
 					string matricula;
 					string data;
                     string hora;
+					cout << "Data da aula: ";
+            		cin >> data;
+					fflush(stdin);
+					cout << "Hora do registro: ";
+            		cin >> hora;
+					fflush(stdin);
+
+					while(matricula!="-27"){
 					cout << "Matricula do aluno: ";
 					cin >> matricula;
 					fflush(stdin);
@@ -228,24 +236,20 @@ Retorno menu(Inscricao lista[], int totalCadastrados, Frequencia listaFrequencia
 					for(int i=0; i < totalCadastrados; i++){
 						if(matricula==lista[i].matricula){
 							frequenciasRegistradas++;
-            				cout << "Data da aula: ";
-            				cin >> data;
-							fflush(stdin);
-							cout << "Hora do registro: ";
-            				cin >> hora;
-							fflush(stdin);
             				listaFrequencia[frequenciasRegistradas].matricula = matricula;
             				listaFrequencia[frequenciasRegistradas].data = data;
             				listaFrequencia[frequenciasRegistradas].hora = hora;
             				gravarArquivoFrequencia("frequencias.csv", matricula, data, hora);
 							conectarComBaseFrequencias("frequencias.csv", listaFrequencia, TAM);
 							matriculaEncontrada = true;
+							cout << "Presença registrada com sucesso\n";
 							break;
 						}
-					cout << lista[i].matricula;
+					//cout << lista[i].matricula;
 					}
-					if (!matriculaEncontrada) {
+					if (!matriculaEncontrada && matricula != "-27") {
 						cout << "Matricula não esta inscrita\n";
+					}
 					}
 				}else{
 					cout << "Estourou limite de registros de frequencia\n";
@@ -275,5 +279,3 @@ Retorno menu(Inscricao lista[], int totalCadastrados, Frequencia listaFrequencia
 	retorno.frequenciasRegistradas = frequenciasRegistradas;
 	return retorno;
 }
-
-
